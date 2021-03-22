@@ -1,0 +1,19 @@
+$formBorderWeight: 1px;
+$formBorderRadius: 4px;
+$formBorderColor: #545454;
+
+$inputPadding: 5px 20px;
+
+form {
+    border: $formBorderWeight solid $formBorderColor;
+    border-radius: $formBorderRadius;
+    padding: 40px;
+
+    input {
+        padding: $inputPadding;
+        width: 100%;
+        line-height: 16px;
+        margin: 10px 0;
+    }
+}
+
