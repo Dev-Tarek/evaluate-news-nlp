@@ -5,34 +5,64 @@
         <title>Test</title>
     </head>
 
-    <body>
+    <body class="gradient">
 
         <header>
             <div class="">
-                Logo
+                Project
             </div>
             <div class="">
-                navigation
+                <a href="https://github.com/Dev-Tarek/evaluate-news-nlp">
+                    Github
+                </a>
             </div>
         </header>
 
         <main>
-            <section>
-                <form class="" onsubmit="return Client.handleSubmit(event)">
-                    <input id="url" type="text" name="input" value="" placeholder="Enter URL to analyize">
-                    <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
-                </form>
-            </section>
 
             <section>
-                <strong>Form Results:</strong>
-                <div id="results"></div>
+                <h1>
+                    Use our modern app to instantly analyze any website with one click
+                </h1>    
             </section>
+
+            <section class="form-section">
+                
+                <form class="" onsubmit="return Client.handleSubmit(event)">
+                    <input id="url" type="text" name="input" value="" placeholder="Enter URL to analyze">
+                    <input type="submit" name="" class="button" value="Analyze" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
+                </form>
+
+                <div id="results"></div>
+
+                <div id="loading-modal"></div>
+                <svg id="loading-spinner">
+                    <defs>
+                        <filter id="blur">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="1" />
+                        </filter>
+                    </defs>
+                    
+                    <circle class="loading-track" cx="50%" cy="50%" r="50" />  
+                    <circle class="loading" cx="50%" cy="50%" r="50" />
+                </svg>
+
+            </section>
+
         </main>
 
         <footer>
-            <p>This is a footer</p>
+            <p>Created by <a href="https://www.linkedin.com/in/abdelrahmanabdelhamid/">devtarek</a>. Powered by <a href="https://www.meaningcloud.com/">MeaningCloud</a></p>
         </footer>
 
+        <script>
+            // Check that service workers are supported
+            if ('serviceWorker' in navigator) {
+                // Use the window load event to keep the page load performant
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js');
+                });
+            }
+        </script>
     <script type="text/javascript" src="main.js"></script></body>
 </html>

@@ -1,19 +1,66 @@
 $formBorderWeight: 1px;
-$formBorderRadius: 4px;
-$formBorderColor: #545454;
+$formBorderRadius: 6px;
+$formBorderColor: #e4e4e4;
 
-$inputPadding: 5px 20px;
+$inputPadding: 5px 5px;
 
-form {
-    border: $formBorderWeight solid $formBorderColor;
+.form-section{
+    position: relative;
+    background-color: #fff;
+    // border: $formBorderWeight solid $formBorderColor;
     border-radius: $formBorderRadius;
     padding: 40px;
+    box-shadow: 0px 0px 6px 0px #ccc;
+    transition: all 0.25s ease-in;
 
-    input {
-        padding: $inputPadding;
-        width: 100%;
-        line-height: 16px;
-        margin: 10px 0;
+    form {
+        display: flex;
+        input {
+            border: 1px solid $formBorderColor;
+            padding: $inputPadding;
+            width: 100%;
+            line-height: 16px;
+            margin: 10px 0;
+            font-size: 2vh;
+            &:focus{
+                outline: none;
+            }
+        }
+        .button {
+            width: 20%;
+            border: none;
+            background-color: #d4ecff;
+        }
+    }
+
+    #results {
+        margin-top: 12px;
+        h6 {
+            margin: 4px;
+            font-size: 2.2ch;
+            text-align: center;
+            .close {
+                color: rgb(175, 86, 86);
+                cursor: pointer;
+                font-weight: 600;
+            }
+        }
+        ul {
+            width: 75%;
+            margin: 4px;
+            margin: auto;
+            border: 1px solid $formBorderColor;
+            border-radius: $formBorderRadius;
+            padding: 4px;
+            li {
+                display: flex;
+                justify-content: space-between;
+                border-bottom: 1px solid $formBorderColor;
+                padding: 8px;
+                &:last-child{
+                    border: none
+                }
+            }
+        }
     }
 }
-

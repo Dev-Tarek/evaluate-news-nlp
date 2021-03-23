@@ -1,4 +1,3 @@
-var path = require('path')
 const dotenv = require('dotenv');
 const express = require('express')
 var cors = require('cors')

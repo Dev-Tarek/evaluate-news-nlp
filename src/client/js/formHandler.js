@@ -1,11 +1,15 @@
-function handleSubmit(event) {
+import { checkUrl } from './urlValidation' ;
+import { toggleLoading } from './toggleLoading';
+
+const handleSubmit = event => {
     event.preventDefault()
 
-    let urlRegex = /^(ftp|http|https):\/\/[^ "]+$/;
+    toggleLoading(true);
 
     let url = document.getElementById('url').value;
-    let urlValid = urlRegex.test(url);
-    
+    let urlValid = checkUrl(url);
+    let resultSection = document.getElementById('results');
+
     if(urlValid){
         fetch('http://localhost:8081/analyize',
             {
@@ -21,16 +25,53 @@ function handleSubmit(event) {
         )
         .then(response => response.json())
         .then(data => {
-            console.log('agreement', data.agreement)
-            console.log('confidence:', data.confidence)
-            console.log('irony', data.irony)
-            console.log('score_tag', data.score_tag)
-            console.log('subjectivity:', data.subjectivity)
+            resultSection.innerHTML =
+                `<h6>
+                    <span onclick="return Client.clearResults()" class="close">[X]</span>
+                    Results for [${url}]:
+                </h6>
+                <ul>
+                    <li>
+                        <span>Agreement</span>
+                        <span>${data.agreement}</span>
+                    </li>
+                    <li>
+                        <span>Confidence</span>
+                        <span>${data.confidence}</span>
+                    </li>
+                    <li>
+                        <span>Irony</span>
+                        <span>${data.irony}</span>
+                    </li>
+                    <li>
+                        <span>Score</span>
+                        <span>${data.score_tag}</span>
+                    </li>
+                    <li>
+                        <span>Subjectivity</span>
+                        <span>${data.subjectivity}</span>
+                    </li>
+                </ul>`
+                toggleLoading(false);
+        })
+        .catch(error => {
+            console.log(error);
+            toggleLoading(false);
+            resultSection.innerHTML = "Unknown server error";
         });
+        
+        return 0;
     }
     else{
-        console.log("Invalid URL")
+        resultSection.innerHTML = "Invalid URL!";
+        toggleLoading(false);
+        return 1;
     }
 }
 
-export { handleSubmit }
+const clearResults = event => {
+    let resultSection = document.getElementById('results');
+    resultSection.innerHTML = "";
+}
+
+export { handleSubmit, clearResults }

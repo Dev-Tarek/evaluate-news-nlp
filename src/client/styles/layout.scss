@@ -1,6 +1,47 @@
+@mixin breakpoint($class) {
+    @if $class == xs {
+      @media (max-width: 767px) { @content; }
+    }
+   
+    @else if $class == sm {
+      @media (min-width: 768px) { @content; }
+    }
+   
+    @else if $class == md {
+      @media (min-width: 992px) { @content; }
+    }
+   
+    @else if $class == lg {
+      @media (min-width: 1200px) { @content; }
+    }
+   
+    @else {
+      @warn "Breakpoint mixin supports: xs, sm, md, lg";
+    }
+  }
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600&display=swap');
+
+$primary: #f0f0f0;
+$secondary: #ffffff;
+$direction: 39deg;
+
+.gradient {
+    background: $primary;
+    background: -moz-linear-gradient($direction,  $primary 0%, $secondary 100%);
+    background: -webkit-linear-gradient($direction,  $primary 0%,$secondary 100%); 
+    background: linear-gradient($direction,  $primary 0%,$secondary 100%);
+     /* IE6-9 */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e700ce', endColorstr='#ff536d',GradientType=1 );
+}
+
+* {
+    font-family: 'Open Sans', sans-serif;
+}
+
 body {
-    display: flex;
     flex-direction: column;
+    justify-content: center;
     min-height: 100vh;
 }
 
@@ -8,13 +49,46 @@ header {
     display: flex;
     justify-content: space-between;
     padding: 10px 40px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 2vh;
+
+    a {
+        text-decoration: none;
+        color: rgb(44, 44, 44)ff;
+    }
 }
 
 main {
-    flex: 2;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 25vh 0px;
+    align-self: center;
+    justify-content: space-evenly;
+
+    section {
+        @include breakpoint(sm) {
+            flex: 0 1 80%;
+        }
+        @include breakpoint(md) {
+            flex: 0 1 40%;
+        }
+        margin: 16px;
+        align-self: center;
+        &:first-child {
+            font-size: 48px;
+        }
+    }
+
 }
 
-section {
-    max-width: 800px;
-    margin: 50px auto;
+footer {
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    font-size: 1.8vh;
+    a {
+        text-decoration: none;
+        color: rgb(41, 70, 93);
+        font-weight: 600;
+    }
 }
