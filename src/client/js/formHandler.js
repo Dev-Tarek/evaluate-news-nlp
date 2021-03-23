@@ -69,10 +69,16 @@ const handleSubmit = event => {
     }
 }
 
-const clearResults = event => {
-    let resultSection = document.getElementById('results');
-    document.getElementById('url').value = '';
-    resultSection.innerHTML = "";
+const clearResults = () => {
+    try{
+        let resultSection = document.getElementById('results');
+        document.getElementById('url').value = '';
+        resultSection.innerHTML = "";
+        return 0;
+    } catch (error) {
+        console.log(error)
+        return 1;
+    }
 }
 
 export { handleSubmit, clearResults }

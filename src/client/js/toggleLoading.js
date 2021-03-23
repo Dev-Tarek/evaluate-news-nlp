@@ -4,11 +4,11 @@ const toggleLoading = (state) => {
     if(state){
         loadingModal.style.display = 'inherit';
         loadingSpinner.style.display = 'inherit';
+        return 'ON';
     }
-    else{
-        loadingModal.style.display = 'none';
-        loadingSpinner.style.display = 'none';
-    }
+    loadingModal.style.display = 'none';
+    loadingSpinner.style.display = 'none';
+    return 'OFF';
 }
 
 export { toggleLoading }
