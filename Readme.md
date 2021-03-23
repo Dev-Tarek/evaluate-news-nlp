@@ -15,4 +15,5 @@ This repo is a solution for the first project: **evaluate-news-nlp**.
 | `start` | start the server with front-end provided in dist folder |
 | `build-dev` | outputs a development build in dist folder |
 | `build-prod` | outputs a production build in dist folder |
+
 Note: workbox caching is available with production build.
