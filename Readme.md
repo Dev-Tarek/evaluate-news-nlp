@@ -1,6 +1,7 @@
 # First Project
 
 This repo is a solution for the first project: **evaluate-news-nlp**.
+App is live on: https://evaluate-news-nlp-devtarek.herokuapp.com/
 
 ### Features
 - Simple interface
