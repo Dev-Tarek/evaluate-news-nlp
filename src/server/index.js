@@ -14,8 +14,8 @@ app.get('/', function (req, res) {
     res.sendFile('dist/index.html')
 })
 
-app.listen(8081, function () {
-    console.log('App listening on port 8081!')
+app.listen(process.env.PORT || 8081, function () {
+    console.log('Server started..')
 })
 
 app.post('/analyize', function (req, res) {
