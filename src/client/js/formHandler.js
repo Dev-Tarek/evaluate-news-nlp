@@ -11,7 +11,7 @@ const handleSubmit = event => {
     let resultSection = document.getElementById('results');
 
     if(urlValid){
-        fetch('http://localhost:8081/analyize',
+        fetch('analyize',
             {
                 method: 'POST',
                 headers: {
