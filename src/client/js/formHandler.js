@@ -71,6 +71,7 @@ const handleSubmit = event => {
 
 const clearResults = event => {
     let resultSection = document.getElementById('results');
+    document.getElementById('url').value = '';
     resultSection.innerHTML = "";
 }
 
